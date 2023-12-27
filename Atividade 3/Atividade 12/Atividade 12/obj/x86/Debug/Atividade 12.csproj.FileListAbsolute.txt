@@ -1,0 +1,7 @@
+C:\Users\Aluno\Desktop\Miguel Escola\tecnologia\LPR\11 ano\C#\Atividade 12\Atividade 12\Atividade 12\bin\Debug\Atividade 12.exe
+C:\Users\Aluno\Desktop\Miguel Escola\tecnologia\LPR\11 ano\C#\Atividade 12\Atividade 12\Atividade 12\bin\Debug\Atividade 12.pdb
+C:\Users\Aluno\Desktop\Miguel Escola\tecnologia\LPR\11 ano\C#\Atividade 12\Atividade 12\Atividade 12\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Aluno\Desktop\Miguel Escola\tecnologia\LPR\11 ano\C#\Atividade 12\Atividade 12\Atividade 12\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Aluno\Desktop\Miguel Escola\tecnologia\LPR\11 ano\C#\Atividade 12\Atividade 12\Atividade 12\obj\x86\Debug\Atividade 12.csproj.GenerateResource.Cache
+C:\Users\Aluno\Desktop\Miguel Escola\tecnologia\LPR\11 ano\C#\Atividade 12\Atividade 12\Atividade 12\obj\x86\Debug\Atividade 12.exe
+C:\Users\Aluno\Desktop\Miguel Escola\tecnologia\LPR\11 ano\C#\Atividade 12\Atividade 12\Atividade 12\obj\x86\Debug\Atividade 12.pdb
