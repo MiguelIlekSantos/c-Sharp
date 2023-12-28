@@ -35,6 +35,10 @@ namespace WindowsFormsApplication1
             colorSecond = ColorTranslator.FromHtml(colorTwo);
             colorThird = ColorTranslator.FromHtml(colorThree);
             colorFourth = ColorTranslator.FromHtml(colorFour);
+
+            this.Text = "Mine Whisper";
+
+            this.Icon = new Icon("bomb.ico");
         }
 
         private void Form1_Load(object sender, EventArgs e)
