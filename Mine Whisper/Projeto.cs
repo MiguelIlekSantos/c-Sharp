@@ -14,10 +14,10 @@ namespace WindowsFormsApplication1
         int[,] matriz = new int[20, 20];
         Button[,] buttons = new Button[20, 20];
 
-        string colorOne = "#E5C29F"; // skin lighter
-        string colorTwo = "#D7B899"; // skin darker
-        string colorThree = "#9be014"; //dark green
-        string colorFour = "#BFE17D";  //light green
+        const string colorOne = "#E5C29F"; // skin lighter
+        const string colorTwo = "#D7B899"; // skin darker 
+        const string colorThree = "#9be014"; //dark green
+        const string colorFour = "#BFE17D";  //light green
         Color colorFirst;
         Color colorSecond;
         Color colorThird;
@@ -37,7 +37,6 @@ namespace WindowsFormsApplication1
             colorFourth = ColorTranslator.FromHtml(colorFour);
 
             this.Text = "Mine Whisper";
-
             this.Icon = new Icon("bomb.ico");
         }
 
@@ -105,13 +104,13 @@ namespace WindowsFormsApplication1
                 {
                     if (posicaoX % 2 == 0 && posicaoY % 2 != 0 || posicaoX % 2 == 1 && posicaoY % 2 == 0)
                     {
-                        ((Button)sender).ForeColor = colorFirst;
-                        ((Button)sender).BackColor = colorFirst;
+                        ((Button)sender).ForeColor = colorThird;
+                        ((Button)sender).BackColor = colorThird;
                     }
                     else
                     {
-                        ((Button)sender).ForeColor = colorSecond;
-                        ((Button)sender).BackColor = colorSecond;
+                        ((Button)sender).ForeColor = colorFourth;
+                        ((Button)sender).BackColor = colorFourth;
                     }
 
                 }
@@ -149,60 +148,58 @@ namespace WindowsFormsApplication1
                 else if (((Button)sender).Text == "0")
                 {
                     ((Button)sender).ForeColor = Color.Black;
-                    bool NoBomb = false;
-
-                    while (!NoBomb)
+                    if (posicaoX % 2 == 0 && posicaoY % 2 != 0 || posicaoX % 2 == 1 && posicaoY % 2 == 0)
                     {
-                        int startY = (posicaoY == 0) ? 0 : posicaoY - 1;
-                        int endY = (posicaoY == 19) ? 19 : posicaoY + 1;
-                        int startX = (posicaoX == 0) ? 0 : posicaoX - 1;
-                        int endX = (posicaoX == 19) ? 19 : posicaoX + 1;
 
-                        for (int i = startY; i <= endY; i++)
-                        {
-                            for (int j = startX; j <= endX; j++)
-                            {
-                                if (j % 2 == 0 && i % 2 != 0 || j % 2 == 1 && i % 2 == 0)
-                                {
-                                    buttons[j, i].ForeColor = Color.Black;
-                                    buttons[j, i].BackColor = colorFirst;
-                                }
-                                else
-                                {
-                                    buttons[j, i].ForeColor = Color.Black;
-                                    buttons[j, i].BackColor = colorSecond;
-                                }
-                            }
-                        }
-                        NoBomb = true;
-                        /*
-                        for (int i = startY; i <= endY; i++)
-                        {
-                            for (int j = startX; j <= endX; j++)
-                            {
-                                if (buttons[j, i].Text == "0")
-                                {
-                                    //Coordenadas coordenadas = (Coordenadas)buttons[j, i].Tag;
-                                    //detectBombs(coordenadas.Y, coordenadas.X);
-                                    NoBomb = false;
-                                    posicaoX = j;
-                                    posicaoY = i;
-
-                                }
-                                else
-                                {
-                                    NoBomb = true;
-                                }
-                            }
-                        }
-                         */
+                        ((Button)sender).BackColor = colorFirst;
                     }
+                    else
+                    {
+                        ((Button)sender).BackColor = colorSecond;
+                    }
+
+                    openEveryZero(posicaoX, posicaoY);
+
 
 
                 }
             }
 
         }
+        public void openEveryZero(int posicaoX, int posicaoY)
+        {
+            for (int i = posicaoX - 1; i < posicaoX + 2; i++)
+            {
+                for (int j = posicaoY - 1; j < posicaoY + 2; j++)
+                {
+                    if (i < 0 || i > 19 || j < 0 || j > 19)
+                    {
+                        return;
+                    }
+                    if (buttons[i, j].ForeColor != Color.Black)
+                    {
+                        buttons[i, j].ForeColor = Color.Black;
+                        buttons[i, j].BackColor = colorFirst;
+                        if (i % 2 == 0 && j % 2 != 0 || i % 2 == 1 && j % 2 == 0)
+                        {
+
+                            buttons[i, j].BackColor = colorFirst;
+                        }
+                        else
+                        {
+                            buttons[i, j].BackColor = colorSecond;
+                        }
+
+                        if (buttons[i, j].Text == "0")
+                        {
+                            openEveryZero(i, j);
+                        }
+                    }
+                }
+            }
+            return;
+        }
+
 
 
         public class Coordenadas
