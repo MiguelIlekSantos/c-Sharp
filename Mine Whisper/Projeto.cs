@@ -25,8 +25,8 @@ namespace WindowsFormsApplication1
 
         bool flags = false;
 
-        int tamanhoBtnAndSpace = 30;
-        int spaceBetweenBtns = 25;
+        int tamanhoBtnAndSpace = 40;
+        int spaceBetweenBtns = 32;
 
         public Form1()
         {
@@ -88,7 +88,10 @@ namespace WindowsFormsApplication1
                 }
             }
 
+
+
         }
+
 
         private void BotaoClicado(object sender, EventArgs e)
         {
@@ -125,10 +128,14 @@ namespace WindowsFormsApplication1
                 if (((Button)sender).Text == "-1")
                 {
                     DialogResult resposta;
-                    resposta = MessageBox.Show("Você clicou em uma bomba.\n Aperte para sair", "Saída", MessageBoxButtons.OK);
-                    if (resposta == DialogResult.OK)
+                    resposta = MessageBox.Show("Você clicou em uma bomba.\n Deseja recomeçar ?", "Saída", MessageBoxButtons.YesNo);
+                    if (resposta == DialogResult.Yes)
                     {
-                        //Application.Exit();
+                        Application.Restart();
+                    }
+                    else
+                    {
+                        Application.Exit();
                     }
                 }
                 else if (((Button)sender).Text != "-1" && ((Button)sender).Text != "0")
