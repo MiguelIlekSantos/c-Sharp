@@ -179,7 +179,6 @@ namespace WindowsFormsApplication1
                     if (buttons[i, j].ForeColor != Color.Black)
                     {
                         buttons[i, j].ForeColor = Color.Black;
-                        buttons[i, j].BackColor = colorFirst;
                         if (i % 2 == 0 && j % 2 != 0 || i % 2 == 1 && j % 2 == 0)
                         {
 
