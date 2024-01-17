@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1
     {
         int[,] matriz = new int[20, 20];
         Button[,] buttons = new Button[20, 20];
+        int contador, contadorBombas, contadorEspaçoFaltando;
 
         const string colorOne = "#E5C29F"; // skin lighter
         const string colorTwo = "#D7B899"; // skin darker 
@@ -30,6 +31,7 @@ namespace WindowsFormsApplication1
 
         public Form1()
         {
+
             InitializeComponent();
             colorFirst = ColorTranslator.FromHtml(colorOne);
             colorSecond = ColorTranslator.FromHtml(colorTwo);
@@ -88,10 +90,41 @@ namespace WindowsFormsApplication1
                 }
             }
 
-
+            for (int i = 0; i < 20; i++)
+            {
+                for (int j = 0; j < 20; j++)
+                {
+                    if (matriz[i, j] == 1)
+                    {
+                        ++contadorBombas;
+                    }
+                    else
+                    {
+                        ++contadorEspaçoFaltando;
+                    }
+                }
+            }
 
         }
 
+        private void verifyWinning()
+        {
+
+            if (contador == contadorEspaçoFaltando)
+            {
+                DialogResult win;
+                win = MessageBox.Show("Parabéns você venceu.\n Deseja recomeçar ?", "Saída", MessageBoxButtons.YesNo);
+                if (win == DialogResult.Yes)
+                {
+                    Application.Restart();
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
+
+        }
 
         private void BotaoClicado(object sender, EventArgs e)
         {
@@ -125,6 +158,7 @@ namespace WindowsFormsApplication1
             }
             else if (((Button)sender).BackColor != Color.Red)
             {
+
                 if (((Button)sender).Text == "-1")
                 {
                     DialogResult resposta;
@@ -140,6 +174,9 @@ namespace WindowsFormsApplication1
                 }
                 else if (((Button)sender).Text != "-1" && ((Button)sender).Text != "0")
                 {
+                    ++contador;
+                    verifyWinning();
+
                     if (posicaoX % 2 == 0 && posicaoY % 2 != 0 || posicaoX % 2 == 1 && posicaoY % 2 == 0)
                     {
                         ((Button)sender).ForeColor = Color.Black;
@@ -154,6 +191,9 @@ namespace WindowsFormsApplication1
                 }
                 else if (((Button)sender).Text == "0")
                 {
+                    ++contador;
+                    verifyWinning();
+
                     ((Button)sender).ForeColor = Color.Black;
                     if (posicaoX % 2 == 0 && posicaoY % 2 != 0 || posicaoX % 2 == 1 && posicaoY % 2 == 0)
                     {
@@ -185,6 +225,9 @@ namespace WindowsFormsApplication1
                     }
                     if (buttons[i, j].ForeColor != Color.Black)
                     {
+                        ++contador;
+                        verifyWinning();
+
                         buttons[i, j].ForeColor = Color.Black;
                         if (i % 2 == 0 && j % 2 != 0 || i % 2 == 1 && j % 2 == 0)
                         {
