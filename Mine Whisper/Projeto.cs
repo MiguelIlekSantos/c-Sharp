@@ -106,8 +106,20 @@ namespace WindowsFormsApplication1
 
         private void verifyWinning()
         {
-
+            contador = 0;
             int contadorEspaçoFaltando = 20 * 20 - contadorBombas;
+
+            for (int i = 0; i <= 19; i++)
+            {
+                for (int j = 0; j <= 19; j++)
+                {
+
+                    if (buttons[i, j].ForeColor == Color.Black)
+                    {
+                        contador++;
+                    }
+                }
+            }
 
             if (contador == contadorEspaçoFaltando)
             {
@@ -186,7 +198,8 @@ namespace WindowsFormsApplication1
                         ((Button)sender).ForeColor = Color.Black;
                         ((Button)sender).BackColor = colorSecond;
                     }
-                    ++contador;
+
+
                     verifyWinning();
                 }
                 else if (((Button)sender).Text == "0")
@@ -202,7 +215,7 @@ namespace WindowsFormsApplication1
                     {
                         ((Button)sender).BackColor = colorSecond;
                     }
-                    ++contador;
+
                     verifyWinning();
 
                     openEveryZero(posicaoX, posicaoY);
@@ -235,7 +248,7 @@ namespace WindowsFormsApplication1
                         {
                             buttons[i, j].BackColor = colorSecond;
                         }
-                        ++contador;
+
                         verifyWinning();
                         if (buttons[i, j].Text == "0")
                         {
